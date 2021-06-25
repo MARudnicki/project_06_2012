@@ -1,6 +1,6 @@
 package com.kodilla.ecommercee;
 
-import com.kodilla.ecommercee.dto.ProductDto;
+import com.kodilla.dto.ProductDto;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;

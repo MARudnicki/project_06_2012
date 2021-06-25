@@ -1,4 +1,4 @@
-package com.kodilla.ecommercee.dto;
+package com.kodilla.dto;
 
 
 import lombok.AllArgsConstructor;
