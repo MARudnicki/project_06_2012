@@ -1,7 +1,6 @@
 package com.kodilla.ecommercee;
 
 import com.kodilla.dto.CartDto;
-import com.kodilla.dto.OrderDto;
 import com.kodilla.dto.ProductDto;
 import com.kodilla.dto.UserDto;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +13,7 @@ import java.util.List;
 @RequestMapping("/v1/cart")
 public class CartController {
 
-    CartDto cartDto;
+    private CartDto cartDto;
 
     @PostMapping("emptyShoppingCart")
     public void emptyShoppingCart(UserDto userDto) {
@@ -32,13 +31,12 @@ public class CartController {
     }
 
     @DeleteMapping("removeProduct")
-    public void removeProduct(@RequestParam int productId) {
+    void removeProduct(@RequestParam int productId) {
         cartDto.getShoppingCart().remove(productId);
     }
 
     @PostMapping("crateOrder")
-    public OrderDto crateOrder(@RequestParam Long userid) {
-        List<ProductDto> Products = cartDto.getShoppingCart();
-        return new OrderDto(userid, false, Products);
+    public List<ProductDto> crateOrder(@RequestParam CartDto cartDto) {
+        return cartDto.getShoppingCart();
     }
 }
