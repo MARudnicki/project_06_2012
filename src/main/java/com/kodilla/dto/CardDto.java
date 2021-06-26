@@ -10,9 +10,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class OrderDto {
-
-    long idUser;
-    boolean isRealized;
-    List<ProductDto> OrderProducts = new ArrayList<>();
+public class CardDto {
+    UserDto user;
+    List<ProductDto> shoppingCart = new ArrayList<>();
 }

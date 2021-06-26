@@ -14,7 +14,7 @@ import java.util.List;
 public class UserDto {
     private final Long id;
     private final String username;
-    private final String status;
+    private final Boolean status;
     private final BigDecimal userKey;
 
     public List<OrderDto> getUser() { return new ArrayList<>(); }
