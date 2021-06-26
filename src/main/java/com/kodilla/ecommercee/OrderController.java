@@ -1,12 +1,9 @@
 package com.kodilla.ecommercee;
 
 import com.kodilla.dto.OrderDto;
-import com.kodilla.dto.ProductDto;
-import com.kodilla.dto.UserDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
