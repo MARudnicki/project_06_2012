@@ -32,6 +32,5 @@ public class ProductController {
 
     @DeleteMapping(value = "deleteProduct")
     public void deleteProduct(Long productId) {
-
     }
 }
