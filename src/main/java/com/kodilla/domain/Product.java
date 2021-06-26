@@ -1,77 +1,43 @@
 package com.kodilla.domain;
 
 import com.sun.istack.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "Product")
 public class Product {
 
-    Long id;
-    String name;
-    String description;
-    BigDecimal price;
-    String groupId;
-
-    public Product() {
-    }
-
-    public Product(Long id, String name, String description, BigDecimal price, String groupId) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.groupId = groupId;
-    }
-
+    @Access(AccessType.FIELD)
     @Id
     @GeneratedValue
     @NotNull
     @Column(name = "ID", unique = true)
-    public Long getId() {
-        return id;
-    }
+    Long id;
 
+    @Access(AccessType.FIELD)
     @Column(name = "NAME")
-    public String getName() {
-        return name;
-    }
+    String name;
 
+    @Access(AccessType.FIELD)
     @Column(name = "DESCRIPTION")
-    public String getDescription() {
-        return description;
-    }
+    String description;
 
+    @Access(AccessType.FIELD)
     @Column(name = "PRICE")
-    public BigDecimal getPrice() {
-        return price;
-    }
+    BigDecimal price;
 
+    @Access(AccessType.FIELD)
     @Column(name = "GROUPID")
-    public String getGroupId() {
-        return groupId;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
-    public void setGroupId(String groupId) {
-        this.groupId = groupId;
-    }
+    String groupId;
 }
 
