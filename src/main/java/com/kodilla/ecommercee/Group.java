@@ -1,27 +1,26 @@
 package com.kodilla.ecommercee;
 
 import com.sun.istack.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Group")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "Group")
 public class Group {
-    long id;
-    String name;
 
     @Id
     @GeneratedValue
     @NotNull
     @Column(name = "ID", unique = true)
-    public long getId() {
-        return id;
-    }
+    private Long id;
 
     @Column(name = "NAME")
-    public String getName() {
-        return name;
-    }
+    private String name;
+
 }
