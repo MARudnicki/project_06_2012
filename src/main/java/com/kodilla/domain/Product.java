@@ -22,22 +22,22 @@ public class Product {
     @GeneratedValue
     @NotNull
     @Column(name = "ID", unique = true)
-    Long id;
+    private Long id;
 
     @Access(AccessType.FIELD)
     @Column(name = "NAME")
-    String name;
+    private String name;
 
     @Access(AccessType.FIELD)
     @Column(name = "DESCRIPTION")
-    String description;
+    private String description;
 
     @Access(AccessType.FIELD)
     @Column(name = "PRICE")
-    BigDecimal price;
+    private BigDecimal price;
 
     @Access(AccessType.FIELD)
     @Column(name = "GROUPID")
-    String groupId;
+    private String groupId;
 }
 
