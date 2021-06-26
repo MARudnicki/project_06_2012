@@ -1,13 +1,5 @@
 package com.kodilla.ecommercee;
 
-import com.kodilla.dto.ProductDto;
-import org.springframework.web.bind.annotation.*;
-
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-
-@RestController
 public class ProductController {
 
     @GetMapping(value = "getProducts")
@@ -34,4 +26,5 @@ public class ProductController {
     public void deleteProduct(Long productId) {
 
     }
+
 }
