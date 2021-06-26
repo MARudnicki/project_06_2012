@@ -17,5 +17,5 @@ public class UserDto {
     private final Boolean status;
     private final BigDecimal userKey;
 
-    public List<OrderDto> getUser() { return new ArrayList<>(); }
+    public CardDto card;
 }
