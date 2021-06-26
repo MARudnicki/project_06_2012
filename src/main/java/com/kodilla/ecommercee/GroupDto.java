@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GroupDto {
-    private long id;
+    private Long id;
     private String name;
 }

@@ -20,12 +20,13 @@ public class GroupController {
 
     @GetMapping(value = "getGroup/{groupId}")
     public GroupDto getGroup(@PathVariable Long groupId) {
-        return new GroupDto(1,"Ubrani a");
+        return new GroupDto(1L,"Ubrani a");
     }
 
     @PutMapping(value = "updateGroup")
     public GroupDto updateGroup(@RequestBody GroupDto groupDto) {
-        return new GroupDto(1,"Ubrania");
+        return new GroupDto(1L,"Ubrania");
     }
 
 }
+
