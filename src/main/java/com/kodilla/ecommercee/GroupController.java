@@ -19,7 +19,7 @@ public class GroupController {
     }
 
     @GetMapping(value = "getGroup/{groupId}")
-    public GroupDto getGroup(@RequestParam Long groupId) {
+    public GroupDto getGroup(@PathVariable Long groupId) {
         return new GroupDto(1,"Ubrani a");
     }
 
