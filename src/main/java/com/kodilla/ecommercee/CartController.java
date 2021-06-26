@@ -5,7 +5,6 @@ import com.kodilla.dto.ProductDto;
 import com.kodilla.dto.UserDto;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,30 +12,28 @@ import java.util.List;
 @RequestMapping("/v1/cart")
 public class CartController {
 
-    private CartDto cartDto;
-
     @PostMapping("emptyShoppingCart")
     public void emptyShoppingCart(UserDto userDto) {
         new CartDto(userDto, new ArrayList<>());
     }
 
-    @GetMapping("getProductShoppingCart")
-    public ProductDto getProductShoppingCart(@RequestParam long ProductId) {
-        return new ProductDto(ProductId, "test", "test des", BigDecimal.valueOf(50), "test");
+    @GetMapping("getProductsShoppingCart")
+    public List<ProductDto> getProductsShoppingCart(@RequestParam CartDto cartDto) {
+        return cartDto.getShoppingCart();
     }
 
     @PutMapping("addProduct")
-    public void addProduct(@RequestParam ProductDto product) {
+    public void addProduct(@RequestParam ProductDto product, CartDto cartDto) {
         cartDto.getShoppingCart().add(product);
     }
 
     @DeleteMapping("removeProduct")
-    void removeProduct(@RequestParam int productId) {
+    void removeProduct(@RequestParam int productId, CartDto cartDto) {
         cartDto.getShoppingCart().remove(productId);
     }
 
-    @PostMapping("crateOrder")
-    public List<ProductDto> crateOrder(@RequestParam CartDto cartDto) {
+    @PostMapping("createOrder")
+    public List<ProductDto> createOrder(@RequestParam CartDto cartDto) {
         return cartDto.getShoppingCart();
     }
 }
