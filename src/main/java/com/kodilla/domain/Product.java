@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Product")
+@Table(name = "PRODUCT")
 public class Product {
 
     @Access(AccessType.FIELD)
@@ -39,5 +39,9 @@ public class Product {
     @Access(AccessType.FIELD)
     @Column(name = "GROUPID")
     private String groupId;
+
+    @ManyToOne
+    @JoinColumn(name = "CARTS_ID")
+    private Cart cart;
 }
 
