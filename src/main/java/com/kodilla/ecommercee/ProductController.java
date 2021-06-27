@@ -30,7 +30,7 @@ public class ProductController {
     }
 
     @DeleteMapping(value = "/deleteProduct/{productId}")
-    public void deleteProduct(@RequestBody Long productId) {
+    public void deleteProduct(@PathVariable Long productId) {
     }
 
 }
