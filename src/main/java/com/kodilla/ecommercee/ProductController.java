@@ -29,8 +29,8 @@ public class ProductController {
         return new ProductDto(1L, "Edited test product", "Edited test description", new BigDecimal("99.99"), 2L);
     }
 
-    @DeleteMapping(value = "deleteProduct")
-    public void deleteProduct(Long productId) {
+    @DeleteMapping(value = "/deleteProduct/{productId}")
+    public void deleteProduct(@RequestBody Long productId) {
     }
 
 }
