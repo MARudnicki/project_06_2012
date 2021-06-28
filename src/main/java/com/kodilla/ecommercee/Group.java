@@ -14,12 +14,14 @@ import javax.persistence.*;
 @Table(name = "Group")
 public class Group {
 
+    @Access(AccessType.FIELD)
     @Id
     @GeneratedValue
     @NotNull
     @Column(name = "ID", unique = true)
     private Long id;
 
+    @Access(AccessType.FIELD)
     @Column(name = "NAME")
     private String name;
 
