@@ -8,8 +8,4 @@ import javax.transaction.Transactional;
 @Repository
 @Transactional
 public interface GroupDao extends CrudRepository<Group, Long> {
-<<<<<<< HEAD
-
-=======
->>>>>>> Added classes Group and GroupDao + making entity from Group
 }
