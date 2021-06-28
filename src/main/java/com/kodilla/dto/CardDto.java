@@ -11,6 +11,6 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 public class CardDto {
-    private UserDto user;
+    private long userId;
     private List<ProductDto> shoppingCart = new ArrayList<>();
 }

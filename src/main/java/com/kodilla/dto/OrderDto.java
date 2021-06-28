@@ -12,7 +12,7 @@ import java.util.List;
 @Data
 public class OrderDto {
 
-    private long idUser;
+    private long userId;
     private boolean isRealized;
     private List<ProductDto> products = new ArrayList<>();
 }
