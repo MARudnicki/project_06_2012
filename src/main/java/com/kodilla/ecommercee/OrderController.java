@@ -4,6 +4,8 @@ import com.kodilla.dto.OrderDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,12 +30,12 @@ public class OrderController {
     public void createOrder(@RequestBody OrderDto orderDto) {
     }
 
-    @PutMapping("updateOrder")
+    @PutMapping(value = "updateOrder", consumes = APPLICATION_JSON_VALUE)
     public OrderDto updateOrder(@RequestBody OrderDto orderDto) {
         return new OrderDto(
                 orderDto.getIdUser(),
                 orderDto.isRealized(),
-                orderDto.getOrderProducts()
+                orderDto.getProducts()
         );
     }
 
