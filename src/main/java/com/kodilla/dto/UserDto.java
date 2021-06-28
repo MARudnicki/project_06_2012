@@ -11,5 +11,5 @@ public class UserDto {
     private final Boolean status;
     private final UserKeyDto userKey;
 
-    public CardDto card;
+    private CardDto card;
 }
