@@ -11,9 +11,9 @@ import java.math.BigDecimal;
 @Data
 public class UserDto {
 
-    Long id;
-    String username;
-    String status;
-    BigDecimal userKey;
+    private Long id;
+    private String username;
+    private String status;
+    private BigDecimal userKey;
 
 }

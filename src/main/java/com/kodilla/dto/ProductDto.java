@@ -1,6 +1,8 @@
 package com.kodilla.dto;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
@@ -10,9 +12,9 @@ import java.math.BigDecimal;
 @Data
 public class ProductDto {
 
-    Long id ;
-    String name;
-    String description;
-    BigDecimal price;
-    String groupId;
+    private Long id;
+    private String name;
+    private String description;
+    private BigDecimal price;
+    private String groupId;
 }

@@ -1,5 +1,9 @@
 package com.kodilla.dto;
-import lombok.*;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,8 +13,8 @@ import java.util.List;
 @Data
 public class CartDto {
 
-    UserDto user;
-    List<ProductDto> shoppingCart = new ArrayList<>();
+    private UserDto user;
+    private List<ProductDto> shoppingCart = new ArrayList<>();
 
 
 }

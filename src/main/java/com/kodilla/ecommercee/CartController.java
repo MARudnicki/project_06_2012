@@ -1,6 +1,7 @@
 package com.kodilla.ecommercee;
 
 import com.kodilla.dto.CartDto;
+import com.kodilla.dto.OrderDto;
 import com.kodilla.dto.ProductDto;
 import com.kodilla.dto.UserDto;
 import org.springframework.web.bind.annotation.*;
@@ -33,7 +34,7 @@ public class CartController {
     }
 
     @PostMapping("createOrder")
-    public List<ProductDto> createOrder(@RequestParam CartDto cartDto) {
-        return cartDto.getShoppingCart();
+    public OrderDto createOrder(@RequestParam UserDto user, CartDto cartDto) {
+        return new OrderDto(user.getId(), false, cartDto.getShoppingCart());
     }
 }
