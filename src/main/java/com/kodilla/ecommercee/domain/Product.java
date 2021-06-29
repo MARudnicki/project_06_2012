@@ -1,4 +1,4 @@
-package com.kodilla.domain;
+package com.kodilla.ecommercee.domain;
 
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
