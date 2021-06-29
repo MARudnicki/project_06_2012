@@ -1,4 +1,4 @@
-package com.kodilla.domain;
+package com.kodilla.ecommercee.domain;
 
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Setter
@@ -28,13 +29,8 @@ public class Order {
     @JoinColumn(name = "USER_ID")
     private User user;
 
-    @NotNull
-    @OneToOne
-    @JoinColumn(name = "CART_ID")
-    private Cart cart;
-
     @OneToMany(targetEntity = Product.class,
-            mappedBy = "ORDER",
+            mappedBy = "order",
             cascade = CascadeType.ALL,
             fetch = FetchType.EAGER)
     private List<Product> productList;
