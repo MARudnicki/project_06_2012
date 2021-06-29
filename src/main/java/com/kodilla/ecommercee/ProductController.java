@@ -1,5 +1,6 @@
 package com.kodilla.ecommercee;
 
+import com.kodilla.domain.Product;
 import com.kodilla.dto.ProductDto;
 import org.springframework.web.bind.annotation.*;
 
