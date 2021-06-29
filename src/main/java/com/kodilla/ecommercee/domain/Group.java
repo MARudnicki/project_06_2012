@@ -1,16 +1,15 @@
-package com.kodilla.ecommercee;
+package com.kodilla.ecommercee.domain;
 
 import com.sun.istack.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
-@Entity
-@Data
+@Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 @Table(name = "Group")
 public class Group {
 
