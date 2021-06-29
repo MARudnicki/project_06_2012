@@ -15,7 +15,6 @@ public class CartController {
 
     @PostMapping("emptyShoppingCart")
     public void emptyShoppingCart(UserDto userDto) {
-        new CartDto(userDto, new ArrayList<>());
     }
 
     @GetMapping("getProductsShoppingCart")
