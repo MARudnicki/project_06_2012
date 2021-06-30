@@ -16,6 +16,5 @@ public class UserDto {
     private final String username;
     private final Boolean status;
     private final UserKeyDto userKey;
-
     private CardDto card;
 }
