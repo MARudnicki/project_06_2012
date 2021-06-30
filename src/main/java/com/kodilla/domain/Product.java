@@ -39,9 +39,5 @@ public class Product {
     @Access(AccessType.FIELD)
     @Column(name = "GROUPID")
     private String groupId;
-
-    @ManyToOne
-    @JoinColumn(name = "CARTS_ID")
-    private Cart cart;
 }
 

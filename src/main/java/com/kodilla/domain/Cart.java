@@ -32,4 +32,10 @@ public class Cart {
             fetch = FetchType.LAZY
     )
     private List<Product> shoppingCart = new ArrayList<>();
+
+    @OneToOne(
+            cascade = CascadeType.ALL, fetch = FetchType.EAGER
+    )
+    @JoinColumn(name = "USER_ID")
+    private User user;
 }
