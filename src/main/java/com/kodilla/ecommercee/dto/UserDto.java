@@ -3,18 +3,12 @@ package com.kodilla.ecommercee.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-import lombok.NoArgsConstructor;
-
-import java.math.BigDecimal;
-
-@NoArgsConstructor
-@AllArgsConstructor
 @Data
+@AllArgsConstructor
 public class UserDto {
-
-    private Long id;
-    private String username;
-    private String status;
-    private BigDecimal userKey;
-
+    private final Long id;
+    private final String username;
+    private final Boolean status;
+    private final UserKeyDto userKey;
+    private CartDto cart;
 }

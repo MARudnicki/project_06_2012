@@ -33,7 +33,7 @@ public class OrderController {
     @PutMapping(value = "updateOrder", consumes = APPLICATION_JSON_VALUE)
     public OrderDto updateOrder(@RequestBody OrderDto orderDto) {
         return new OrderDto(
-                orderDto.getIdUser(),
+                orderDto.getUserId(),
                 orderDto.isRealized(),
                 orderDto.getProducts()
         );
