@@ -30,7 +30,6 @@ public class Order {
     private User user;
 
     @OneToMany(targetEntity = Product.class,
-            mappedBy = "order",
             cascade = CascadeType.ALL,
             fetch = FetchType.EAGER)
     private List<Product> productList;
