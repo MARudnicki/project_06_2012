@@ -12,5 +12,5 @@ import java.util.List;
 @Data
 public class CardDto {
     private long userId;
-    private List<com.kodilla.ecommercee.dto.ProductDto_> shoppingCart = new ArrayList<>();
+    private List<com.kodilla.ecommercee.dto.ProductDto> shoppingCart = new ArrayList<>();
 }

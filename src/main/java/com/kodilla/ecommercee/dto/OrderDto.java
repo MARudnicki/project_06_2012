@@ -14,5 +14,5 @@ public class OrderDto {
 
     private long userId;
     private boolean isRealized;
-    private List<com.kodilla.ecommercee.dto.ProductDto_> products = new ArrayList<>();
+    private List<com.kodilla.ecommercee.dto.ProductDto> products = new ArrayList<>();
 }
