@@ -1,6 +1,6 @@
 package com.kodilla.ecommercee;
 
-import com.kodilla.dto.OrderDto;
+import com.kodilla.ecommercee.dto.OrderDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

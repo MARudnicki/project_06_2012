@@ -1,13 +1,7 @@
-package com.kodilla.dto;
+package com.kodilla.ecommercee.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -16,5 +10,5 @@ public class UserDto {
     private final String username;
     private final Boolean status;
     private final UserKeyDto userKey;
-    private CardDto card;
+    private CartDto cart;
 }

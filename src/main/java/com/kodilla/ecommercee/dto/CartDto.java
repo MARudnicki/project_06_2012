@@ -1,4 +1,4 @@
-package com.kodilla.dto;
+package com.kodilla.ecommercee.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,7 +10,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class CardDto {
+public class CartDto {
     private long userId;
     private List<ProductDto> shoppingCart = new ArrayList<>();
 }
