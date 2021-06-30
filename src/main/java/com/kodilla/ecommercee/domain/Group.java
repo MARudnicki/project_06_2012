@@ -10,7 +10,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Group")
+@Table(name = "product_group")
 public class Group {
 
     @Access(AccessType.FIELD)
