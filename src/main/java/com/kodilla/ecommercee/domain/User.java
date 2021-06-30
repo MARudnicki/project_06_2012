@@ -18,8 +18,13 @@ public class User {
 
     @Access(AccessType.FIELD)
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @NotNull
     @Column(name = "ID", unique = true)
     private Long id;
+
+    @Access(AccessType.FIELD)
+    @OneToOne()
+    @JoinColumn(name = "CART")
+    private Cart cart;
 }

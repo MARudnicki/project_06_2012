@@ -25,17 +25,19 @@ public class Cart {
     @Column(name = "ID", unique = true)
     private Long id;
 
+    @Access(AccessType.FIELD)
     @OneToMany(
             targetEntity = Product.class,
-            mappedBy = "shoppingCart",
+            mappedBy = "CART",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
-    private List<Product> shoppingCart = new ArrayList<>();
+    private List<Product> shoppingCart;
 
-    @OneToOne(
-            cascade = CascadeType.ALL, fetch = FetchType.EAGER
-    )
-    @JoinColumn(name = "USER_ID")
+    @Access(AccessType.FIELD)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "USER")
     private User user;
+
+
 }
