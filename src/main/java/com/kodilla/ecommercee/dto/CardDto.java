@@ -10,8 +10,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class CartDto {
+public class CardDto {
     private long userId;
-    private List<ProductDto> shoppingCart = new ArrayList<>();
-
+    private List<com.kodilla.ecommercee.dto.ProductDto> shoppingCart = new ArrayList<>();
 }
