@@ -29,8 +29,8 @@ public class Order {
     @JoinColumn(name = "USER_ID")
     private User user;
 
-    @OneToMany(targetEntity = Product.class,
-            cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER)
-    private List<Product> productList;
+//    @OneToMany(targetEntity = Product.class,
+//            cascade = CascadeType.ALL,
+//            fetch = FetchType.EAGER)
+//    private List<Product> productList;
 }

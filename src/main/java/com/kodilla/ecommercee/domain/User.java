@@ -36,10 +36,10 @@ public class User {
     @Column(name = "USERKEY")
     private BigDecimal userKey = getUserKey();
 
-//    @OneToMany(targetEntity = Order.class,
-//            cascade = CascadeType.ALL,
-//            fetch = FetchType.EAGER)
-//    private List<Order> orders;
+    @OneToMany(targetEntity = Order.class,
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER)
+    private List<Order> orders;
 
     @Access(AccessType.FIELD)
     @OneToOne(cascade = CascadeType.ALL)
