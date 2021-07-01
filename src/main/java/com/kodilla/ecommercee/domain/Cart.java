@@ -28,7 +28,6 @@ public class Cart {
     @Access(AccessType.FIELD)
     @OneToMany(
             targetEntity = Product.class,
-            mappedBy = "CART",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
