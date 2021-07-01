@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("/v1/cart")
 public class CartController {
 
-    @GetMapping("emptyShoppingCart")
+    @PostMapping("emptyShoppingCart")
     public void emptyShoppingCart(UserDto userDto) {
     }
 
@@ -27,12 +27,12 @@ public class CartController {
         cartDto.getShoppingCart().add(product);
     }
 
-    @GetMapping("/removeProduct/{productId}&{cartDto}")
+    @DeleteMapping("/removeProduct/{productId}&{cartDto}")
     void removeProduct(int productId, CartDto cartDto) {
         cartDto.getShoppingCart().remove(productId);
     }
 
-    @GetMapping("/createOrder/{userId}")
+    @PostMapping("/createOrder/{userId}")
     public OrderDto createOrder(@RequestBody Long userId) {
         return new OrderDto(userId, false, new ArrayList<>());
     }
