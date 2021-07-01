@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.util.List;
 
 @Setter
@@ -15,9 +14,10 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "USERS")
-public class User {
+@Table(name = "CART")
+public class Cart {
 
+    @Access(AccessType.FIELD)
     @Id
     @GeneratedValue
     @NotNull
@@ -25,24 +25,17 @@ public class User {
     private Long id;
 
     @Access(AccessType.FIELD)
-    @Column(name = "USERNAME")
-    private String username;
-
-    @Access(AccessType.FIELD)
-    @Column(name = "STATUS")
-    private Boolean status;
-
-    @Access(AccessType.FIELD)
-    @Column(name = "USERKEY")
-    private BigDecimal userKey = getUserKey();
-
-    @OneToMany(targetEntity = Order.class,
+    @OneToMany(
+            targetEntity = Product.class,
             cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER)
-    private List<Order> orders;
+            fetch = FetchType.LAZY
+    )
+    private List<Product> shoppingCart;
 
     @Access(AccessType.FIELD)
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "CART")
-    private Cart cart;
+    @JoinColumn(name = "USER")
+    private User user;
+
+
 }
