@@ -39,4 +39,8 @@ public class Product {
     @Access(AccessType.FIELD)
     @Column(name = "GROUPID")
     private String groupId;
+
+    @ManyToOne
+    @JoinColumn(name = "GROUP_ID")
+    private Group group;
 }
