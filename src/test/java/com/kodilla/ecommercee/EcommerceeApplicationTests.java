@@ -33,9 +33,10 @@ public class EcommerceeApplicationTests {
         //When
         productDao.save(product);
         int id = Math.toIntExact(product.getId());
-        Optional<Product> readProduct = productDao.findById(1);
-        Assertions.assertTrue(readProduct.isPresent());
+        Optional<Product> readProduct = productDao.findById(1L);
+
         //Then
+        Assertions.assertTrue(readProduct.isPresent());
 
         //CleanUp
         productDao.deleteAll();
