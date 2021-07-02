@@ -38,7 +38,7 @@ public class User {
 
     @OneToMany(targetEntity = Order.class,
             cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER)
+            fetch = FetchType.LAZY)
     private List<Order> orders;
 
     @Access(AccessType.FIELD)
