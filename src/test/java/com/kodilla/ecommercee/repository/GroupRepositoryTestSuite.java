@@ -49,6 +49,7 @@ class GroupRepositoryTestSuite {
         //Then
         assertEquals(3, productList.size());
         assertTrue(foundGroup.isPresent());
+        assertEquals(product1.getGroup(), group);
 
         //Cleanup
         groupRepository.deleteById(id);
