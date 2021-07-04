@@ -24,23 +24,28 @@ public class Product {
     @Column(name = "ID", unique = true)
     private Long id;
 
+    @NotNull
     @Access(AccessType.FIELD)
     @Column(name = "NAME")
     private String name;
 
+    @NotNull
     @Access(AccessType.FIELD)
     @Column(name = "DESCRIPTION")
     private String description;
 
+    @NotNull
     @Access(AccessType.FIELD)
     @Column(name = "PRICE")
     private BigDecimal price;
 
-    @Access(AccessType.FIELD)
-    @Column(name = "GROUPID")
-    private String groupId;
-
     @ManyToOne
     @JoinColumn(name = "GROUP_ID")
     private Group group;
+
+    public Product(@NotNull String name, @NotNull String description, @NotNull BigDecimal price) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+    }
 }
