@@ -26,6 +26,8 @@ class OrderTestSuite {
         products.add(new Product("product 01", "description 01", new BigDecimal(100), "1"));
         products.add(new Product("product 02", "description 02", new BigDecimal(200), "2"));
         products.add(new Product("product 03", "description 03", new BigDecimal(300), "3"));
+        products.add(new Product("product 04", "description 04", new BigDecimal(400), "4"));
+        products.add(new Product("product 05", "description 05", new BigDecimal(500), "5"));
 
         Order order  = new Order(1L, 10L, products);
         orderDao.save(order);
@@ -38,7 +40,7 @@ class OrderTestSuite {
         assertTrue(optionalOrder.isPresent());
         assertEquals(1L, order.getId());
         assertEquals(10L, order.getUserId());
-        assertEquals(3, productList.size());
+        assertEquals(5, productList.size());
         /* Cleanup */
         orderDao.deleteById(id);
     }
