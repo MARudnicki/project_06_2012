@@ -8,7 +8,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.List;
 
 @Setter
 @Getter
@@ -41,12 +40,13 @@ public class Product {
     @Column(name = "GROUPID")
     private String groupId;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST
+    )
     @JoinColumn(name = "GROUP_ID")
     private Group group;
 
     @ManyToOne(targetEntity = Order.class,
-            cascade = CascadeType.ALL,
+            cascade = CascadeType.PERSIST,
             fetch = FetchType.EAGER)
     private Order order;
 
