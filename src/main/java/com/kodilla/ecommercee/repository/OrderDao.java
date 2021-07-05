@@ -12,16 +12,4 @@ import java.util.Optional;
 @Transactional
 @Repository
 public interface OrderDao extends CrudRepository<Order,Long> {
-
-    @Override
-    Order save(Order order);
-
-    @Override
-    List<Order> findAll();
-
-    @Override
-    Optional<Order> findById(Long id);
-
-    @Override
-    void deleteById(Long id);
 }
