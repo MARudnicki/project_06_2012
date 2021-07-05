@@ -10,4 +10,5 @@ import java.math.BigDecimal;
 public class UserKeyDto {
     private final BigDecimal userKey;
     private final Long validUserKeyTime;
+
 }
