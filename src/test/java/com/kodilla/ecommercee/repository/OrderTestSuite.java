@@ -39,7 +39,7 @@ class OrderTestSuite {
         assertEquals(10L, order.getUserId());
         assertEquals(3, productList.size());
         /* Cleanup */
-        orderDao.deleteById(id);
+        orderDao.deleteAll();
     }
 
 }
