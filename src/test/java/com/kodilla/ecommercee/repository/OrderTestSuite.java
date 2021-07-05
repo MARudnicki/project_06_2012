@@ -42,7 +42,8 @@ class OrderTestSuite {
         assertEquals(5, productList.size());
 //        assertTrue(optionalOrder.isPresent());
         /* Cleanup */
-        orderDao.deleteById(id);
+//        orderDao.deleteById(id);
+        orderDao.deleteAll();
     }
 
 }
