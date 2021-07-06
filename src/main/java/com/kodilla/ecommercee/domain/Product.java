@@ -48,7 +48,7 @@ public class Product {
             fetch = FetchType.EAGER)
     private Order order;
 
-    public Product(@NotNull String name, @NotNull String description, @NotNull BigDecimal price, @NotNull String groupId) {
+    public Product(@NotNull Long id, @NotNull String name, @NotNull String description, @NotNull BigDecimal price, @NotNull String groupId) {
         this.id = id;
         this.name = name;
         this.description = description;

@@ -1,5 +1,6 @@
 package com.kodilla.ecommercee.repository;
 
+import com.kodilla.ecommercee.domain.Group;
 import com.kodilla.ecommercee.domain.Order;
 import com.kodilla.ecommercee.domain.Product;
 import org.junit.jupiter.api.Test;
@@ -23,9 +24,9 @@ class OrderTestSuite {
     public void testOrderEntity() {
         /* Given */
         List<Product> products = new ArrayList<Product>();
-        products.add(new Product("product 01", "description 01", new BigDecimal(100), "1"));
-        products.add(new Product("product 02", "description 02", new BigDecimal(200), "2"));
-        products.add(new Product("product 03", "description 03", new BigDecimal(300), "3"));
+        products.add(new Product(20L,"product 01", "description 01", new BigDecimal(100), "1"));
+        products.add(new Product(30L, "product 02", "description 02", new BigDecimal(200), "2"));
+        products.add(new Product(40L,"product 03", "description 03", new BigDecimal(300), "3"));
 
         Order order  = new Order(1L, 10L, products);
         orderDao.save(order);
@@ -41,5 +42,4 @@ class OrderTestSuite {
         /* Cleanup */
         orderDao.deleteAll();
     }
-
 }
