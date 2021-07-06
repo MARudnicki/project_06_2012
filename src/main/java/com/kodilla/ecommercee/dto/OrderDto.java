@@ -16,4 +16,6 @@ public class OrderDto {
     private long userId;
     private boolean isRealized;
     private List<ProductDto> products = new ArrayList<>();
+  
 }
+
