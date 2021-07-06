@@ -10,15 +10,5 @@ public class EcommerceeApplicationTests {
     public void contextLoads() {
     }
 
-    @Test
-    public void testUserEntity() {
-
-        //Given
-
-        //When
-
-        //Then
-    }
-
 }
 
