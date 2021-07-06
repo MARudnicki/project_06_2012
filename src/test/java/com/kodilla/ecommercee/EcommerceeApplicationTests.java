@@ -29,7 +29,7 @@ public class EcommerceeApplicationTests {
     public void testEntityProduct() {
 
         //Given
-        Product product = new Product(1L, "test", "test", new BigDecimal(500), "test", new Group());
+        Product product = new Product("test", "test", new BigDecimal(500));
 
         //When
         productDao.save(product);
