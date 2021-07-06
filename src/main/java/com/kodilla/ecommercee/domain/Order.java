@@ -25,9 +25,8 @@ public class Order {
     private Long id;
 
     @NotNull
-    @ManyToOne
     @JoinColumn(name = "USER_ID")
-    private User user;
+    private Long userId;
 
     @OneToMany(targetEntity = Product.class,
             cascade = CascadeType.ALL,
