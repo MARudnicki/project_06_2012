@@ -21,6 +21,9 @@ class GroupRepositoryTestSuite {
     @Autowired
     private GroupRepository groupRepository;
 
+    @Autowired
+    private ProductDao productDao;
+
     @Test
     public void testProductList() {
 
@@ -42,15 +45,18 @@ class GroupRepositoryTestSuite {
         groupRepository.save(group);
 
         //When
-        Long id = group.getId();
-        Optional<Group> foundGroup = groupRepository.findById(id);
+        Long groupId = group.getId();
+        Optional<Group> foundGroup = groupRepository.findById(groupId);
+        Long product1Id = product1.getId();
+        Optional<Product> foundProduct = productDao.findById(product1Id);
 
         //Then
         assertTrue(foundGroup.isPresent());
-        assertEquals(product1.getGroup(), group);
+        assertEquals(3, foundGroup.get().getProductList().size());
+        assertEquals(foundProduct.get().getGroupId(), foundGroup.get().getId());
 
         //Cleanup
-        groupRepository.deleteById(id);
+        groupRepository.deleteAll();
 
     }
 
