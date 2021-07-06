@@ -43,11 +43,9 @@ class GroupRepositoryTestSuite {
 
         //When
         Long id = group.getId();
-        List<Product> productList = group.getProductList();
         Optional<Group> foundGroup = groupRepository.findById(id);
 
         //Then
-        assertEquals(3, productList.size());
         assertTrue(foundGroup.isPresent());
         assertEquals(product1.getGroup(), group);
 
