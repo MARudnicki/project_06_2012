@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 import java.util.Optional;
 
 @SpringBootTest
-class GroupDaoTestSuite {
+class GroupTestSuite {
 
     @Autowired
     private GroupDao groupDao;
