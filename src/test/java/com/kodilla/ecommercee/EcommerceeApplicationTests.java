@@ -1,5 +1,6 @@
 package com.kodilla.ecommercee;
 
+import com.kodilla.ecommercee.domain.Group;
 import com.kodilla.ecommercee.domain.Product;
 import com.kodilla.ecommercee.repository.ProductDao;
 import org.junit.jupiter.api.Assertions;
@@ -28,7 +29,7 @@ public class EcommerceeApplicationTests {
     public void testEntityProduct() {
 
         //Given
-        Product product = new Product(1L, "test", "test", new BigDecimal(500), "test");
+        Product product = new Product(1L, "test", "test", new BigDecimal(500), "test", new Group());
 
         //When
         productDao.save(product);

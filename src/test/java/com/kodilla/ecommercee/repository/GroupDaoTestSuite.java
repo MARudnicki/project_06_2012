@@ -2,7 +2,6 @@ package com.kodilla.ecommercee.repository;
 
 import com.kodilla.ecommercee.domain.Group;
 import com.kodilla.ecommercee.domain.Product;
-import com.kodilla.ecommercee.repository.GroupRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,14 +11,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.math.BigDecimal;
-import java.util.List;
 import java.util.Optional;
 
 @SpringBootTest
-class GroupRepositoryTestSuite {
+class GroupDaoTestSuite {
 
     @Autowired
-    private GroupRepository groupRepository;
+    private GroupDao groupDao;
 
     @Autowired
     private ProductDao productDao;
@@ -42,22 +40,21 @@ class GroupRepositoryTestSuite {
         product2.setGroup(group);
         product3.setGroup(group);
 
-        groupRepository.save(group);
+        groupDao.save(group);
 
         //When
         Long groupId = group.getId();
-        Optional<Group> foundGroup = groupRepository.findById(groupId);
+        Optional<Group> foundGroup = groupDao.findById(groupId);
         Long product1Id = product1.getId();
         Optional<Product> foundProduct = productDao.findById(product1Id);
 
         //Then
         assertTrue(foundGroup.isPresent());
         assertEquals(3, foundGroup.get().getProductList().size());
-        assertEquals(foundProduct.get().getGroupId(), foundGroup.get().getId());
+        assertEquals(foundProduct.get().getGroup().getId(), groupId);
 
-        //Cleanup
-        groupRepository.deleteAll();
-
+        //CleanUp
+        groupDao.deleteAll();
     }
 
 }
