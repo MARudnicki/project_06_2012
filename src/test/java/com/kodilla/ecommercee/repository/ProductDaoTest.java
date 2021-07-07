@@ -1,4 +1,4 @@
-package com.kodilla.ecommercee;
+package com.kodilla.ecommercee.repository;
 
 import com.kodilla.ecommercee.domain.Group;
 import com.kodilla.ecommercee.domain.Order;
@@ -27,7 +27,7 @@ public class ProductDaoTest {
 
         //Given
         Product product = new Product(1L, "test", "test",
-                new BigDecimal(500), "test",new Group(),new Order());
+                new BigDecimal(500), new Group(),new Order());
         //When
         productDao.save(product);
         Optional<Product> readProduct = productDao.findById(1L);

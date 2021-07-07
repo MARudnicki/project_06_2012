@@ -22,6 +22,7 @@ public class Group {
     @Column(name = "ID", unique = true)
     private Long id;
 
+    @NotNull
     @Access(AccessType.FIELD)
     @Column(name = "NAME")
     private String name;
@@ -30,8 +31,11 @@ public class Group {
             targetEntity = Product.class,
             mappedBy = "group",
             cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
+            fetch = FetchType.EAGER
     )
     private List<Product> productList = new ArrayList<>();
 
+    public Group(@NotNull String name) {
+        this.name = name;
+    }
 }
