@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Setter
@@ -28,14 +29,13 @@ public class Cart {
     @OneToMany(
             targetEntity = Product.class,
             cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
+            fetch = FetchType.EAGER
     )
-    private List<Product> shoppingCart;
+    private List<Product> shoppingCart = new ArrayList<>();
 
     @Access(AccessType.FIELD)
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "USER")
     private User user;
-
 
 }
