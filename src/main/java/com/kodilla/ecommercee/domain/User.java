@@ -46,7 +46,4 @@ public class User {
     @JoinColumn(name = "CART")
     private Cart cart;
 
-    public User(@NotNull String username) {
-        this.username = username;
-    }
 }
