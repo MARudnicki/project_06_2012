@@ -37,5 +37,6 @@ public class ProductDaoTest {
 
         //CleanUp
         productDao.deleteAll();
+
     }
 }
