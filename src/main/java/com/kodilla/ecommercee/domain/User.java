@@ -45,4 +45,8 @@ public class User {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "CART")
     private Cart cart;
+
+    public User(@NotNull String username) {
+        this.username = username;
+    }
 }
