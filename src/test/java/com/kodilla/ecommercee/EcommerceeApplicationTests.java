@@ -36,7 +36,8 @@ public class EcommerceeApplicationTests {
         Optional<Product> readProduct = productDao.findById(1L);
 
         //Then
-        Assertions.assertTrue(readProduct.isPresent());
+        if (readProduct.isPresent())
+            Assertions.assertTrue(readProduct.isPresent());
 
         //CleanUp
         productDao.deleteAll();
