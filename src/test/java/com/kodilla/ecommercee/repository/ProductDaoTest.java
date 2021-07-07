@@ -33,7 +33,7 @@ public class ProductDaoTest {
         Assertions.assertTrue(readProduct.isPresent());
 
         //CleanUp
-        productDao.delete(product);
+    //    productDao.delete(product);
 
     }
 }
