@@ -37,10 +37,6 @@ public class Product {
     @Column(name = "PRICE")
     private BigDecimal price;
 
-    @Access(AccessType.FIELD)
-    @Column(name = "GROUPID")
-    private String groupId;
-
     @ManyToOne
     @JoinColumn(name = "GROUP_ID")
     private Group group;
