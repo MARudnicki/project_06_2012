@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -21,53 +22,20 @@ public class UserTestSuite {
     private UserDao userDao;
 
     @Test
-    public void isUserSavedTest() {
-        //Given
-        User user1 = new User();
-
-        //When
-        userDao.save(user1);
-
-        //Then
-        assertTrue(userDao.findById(user1.getId()).isPresent());
-
-        //CleanUp
-        userDao.deleteAll();
-
-    }
-
-    @Test
-    public void isUserDeletedTest() {
-        //Given
-        User user1 = new User();
-        userDao.save(user1);
-
-        //When
-        userDao.delete(user1);
-
-        //Then
-        assertFalse(userDao.findById(user1.getId()).isPresent());
-
-        //CleanUp
-        userDao.deleteAll();
-
-    }
-
-    @Test
     public void userEntityTest() {
         //Given
         List<Order> orders = new ArrayList<>();
         Cart cart1 = new Cart();
-        User user1 = new User(1L, "UserA", true, BigDecimal.valueOf(12345), orders, cart1);
-
-        //When
+        User user1 = new User(null, "UserA", true, BigInteger.valueOf(12345), orders, cart1);
         userDao.save(user1);
 
+        //When
+        Optional<User> optionalUser = userDao.findById(user1.getId());
+
         //Then
-        assertEquals(1L, user1.getId());
-        assertEquals("UserA", user1.getUsername());
-        assertEquals(true, user1.getStatus());
-        assertEquals(BigDecimal.valueOf(12345), user1.getUserKey());
+        assertEquals("UserA", optionalUser.get().getUsername());
+        assertEquals(true, optionalUser.get().getStatus());
+        assertEquals(BigInteger.valueOf(12345), optionalUser.get().getUserKey());
 
         //CleanUp
         userDao.deleteAll();
