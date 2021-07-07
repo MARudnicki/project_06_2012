@@ -30,7 +30,7 @@ class CartTestSuite {
         Product product2 = new Product("product2", "description2", new BigDecimal(1));
         Product product3 = new Product("product3", "description3", new BigDecimal(1));
 
-        User user = new User("User1", true);
+        User user = new User("User1");
 
         Cart cart = new Cart();
 

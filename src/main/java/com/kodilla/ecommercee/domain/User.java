@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.List;
 
 @Setter
@@ -34,7 +35,7 @@ public class User {
 
     @Access(AccessType.FIELD)
     @Column(name = "USERKEY")
-    private BigDecimal userKey = getUserKey();
+    private BigInteger userKey = getUserKey();
 
     @OneToMany(targetEntity = Order.class,
             cascade = CascadeType.ALL,
@@ -46,8 +47,7 @@ public class User {
     @JoinColumn(name = "CART")
     private Cart cart;
 
-    public User(@NotNull String username, @NotNull Boolean status) {
+    public User(String username) {
         this.username = username;
-        this.status = status;
     }
 }
