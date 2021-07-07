@@ -37,10 +37,6 @@ public class Product {
     @Column(name = "PRICE")
     private BigDecimal price;
 
-    @Access(AccessType.FIELD)
-    @Column(name = "GROUPID")
-    private String groupId;
-
     @ManyToOne
     @JoinColumn(name = "GROUP_ID")
     private Group group;
@@ -50,4 +46,9 @@ public class Product {
             fetch = FetchType.EAGER)
     private Order order;
 
+    public Product(@NotNull String name, @NotNull String description, @NotNull BigDecimal price) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+    }
 }
