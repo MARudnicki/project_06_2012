@@ -1,30 +1,32 @@
-package com.kodilla.ecommercee;
+package com.kodilla.ecommercee.controllers;
 
 import com.kodilla.ecommercee.dto.GroupDto;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequestMapping("/v1/group")
+@RequiredArgsConstructor
 public class GroupController {
 
-    @GetMapping(value = "getGroups")
+    @GetMapping(value = "/getGroups")
     public List<GroupDto> getGroups() {
         return new ArrayList<>();
     }
 
-    @PostMapping(value = "createGroup")
+    @PostMapping(value = "/createGroup")
     public void createGroup(@RequestBody GroupDto groupDto) {
-
     }
 
-    @GetMapping(value = "getGroup/{groupId}")
+    @GetMapping(value = "/getGroup/{groupId}")
     public GroupDto getGroup(@PathVariable Long groupId) {
         return new GroupDto(1L,"Ubrani a");
     }
 
-    @PutMapping(value = "updateGroup")
+    @PutMapping(value = "/updateGroup")
     public GroupDto updateGroup(@RequestBody GroupDto groupDto) {
         return new GroupDto(1L,"Ubrania");
     }
