@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -25,11 +27,13 @@ public class Order {
     private Long id;
 
     @NotNull
+    @ManyToOne
     @JoinColumn(name = "USER_ID")
-    private Long userId;
+    private User user;
 
     @OneToMany(targetEntity = Product.class,
             cascade = CascadeType.ALL,
             fetch = FetchType.EAGER)
-    private List<Product> productList;
+    @Fetch(value = FetchMode.SUBSELECT)
+    private List<Product> productList = new ArrayList<>();
 }
