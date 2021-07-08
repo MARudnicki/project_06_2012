@@ -1,6 +1,6 @@
-package com.kodilla.ecommercee;
+package com.kodilla.ecommercee.controllers;
 
-import com.kodilla.dto.OrderDto;
+import com.kodilla.ecommercee.dto.OrderDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,11 +26,11 @@ public class OrderController {
         );
     }
 
-    @PostMapping(value = "createOrder")
+    @PostMapping(value = "/createOrder")
     public void createOrder(@RequestBody OrderDto orderDto) {
     }
 
-    @PutMapping(value = "updateOrder", consumes = APPLICATION_JSON_VALUE)
+    @PutMapping(value = "/updateOrder", consumes = APPLICATION_JSON_VALUE)
     public OrderDto updateOrder(@RequestBody OrderDto orderDto) {
         return new OrderDto(
                 orderDto.getUserId(),
@@ -39,6 +39,6 @@ public class OrderController {
         );
     }
 
-    @DeleteMapping(value = "deleteOrder/{orderId}")
+    @DeleteMapping(value = "/deleteOrder/{orderId}")
     public void deleteOrder(@PathVariable Long orderId) {}
 }

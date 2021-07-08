@@ -1,4 +1,4 @@
-package com.kodilla.dto;
+package com.kodilla.ecommercee.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,4 +10,5 @@ import java.math.BigDecimal;
 public class UserKeyDto {
     private final BigDecimal userKey;
     private final Long validUserKeyTime;
+
 }

@@ -1,4 +1,5 @@
-package com.kodilla.dto;
+package com.kodilla.ecommercee.dto;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,4 +16,6 @@ public class OrderDto {
     private long userId;
     private boolean isRealized;
     private List<ProductDto> products = new ArrayList<>();
+  
 }
+
