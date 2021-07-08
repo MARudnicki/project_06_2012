@@ -2,6 +2,7 @@ package com.kodilla.ecommercee.domain;
 
 import com.sun.istack.NotNull;
 import lombok.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -36,6 +37,11 @@ public class Group {
     private List<Product> productList = new ArrayList<>();
 
     public Group(@NotNull String name) {
+        this.name = name;
+    }
+
+    public Group(Long id, String name) {
+        this.id = id;
         this.name = name;
     }
 }
