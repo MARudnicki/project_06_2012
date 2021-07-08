@@ -21,7 +21,6 @@ public class Product {
     @Access(AccessType.FIELD)
     @Id
     @GeneratedValue
-    @NotNull
     @Column(name = "ID", unique = true)
     private Long id;
 
@@ -37,12 +36,14 @@ public class Product {
     @Column(name = "PRICE")
     private BigDecimal price;
 
-    @ManyToOne
+    @ManyToOne(
+            cascade = CascadeType.PERSIST
+    )
     @JoinColumn(name = "GROUP_ID")
     private Group group;
 
     @ManyToOne(targetEntity = Order.class,
-            cascade = CascadeType.ALL,
+            cascade = CascadeType.PERSIST,
             fetch = FetchType.EAGER)
     private Order order;
 
