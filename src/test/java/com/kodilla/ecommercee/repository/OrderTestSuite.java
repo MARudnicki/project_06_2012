@@ -24,21 +24,24 @@ class OrderTestSuite {
     public void testOrderEntity() {
         /* Given */
         List<Product> products = new ArrayList<Product>();
-        products.add(new Product(20L,"product 01", "description 01", new BigDecimal(100), null, null));
-        products.add(new Product(30L, "product 02", "description 02", new BigDecimal(200), null, null));
-        products.add(new Product(40L,"product 03", "description 03", new BigDecimal(300), null, null));
+        products.add(new Product(null,"product 01", "description 01", new BigDecimal(100), null, null));
+        products.add(new Product(null, "product 02", "description 02", new BigDecimal(200), null, null));
+        products.add(new Product(null,"product 03", "description 03", new BigDecimal(300), null, null));
 
         Order order  = new Order(1L, 10L, products);
         orderDao.save(order);
 
         /* When */
-        Long id = order.getId();
-        List<Product> productList = order.getProductList();
-        Optional<Order> optionalOrder = orderDao.findById(id);
+        Long orderId = order.getId();
+        Optional<Order> optionalOrder = orderDao.findById(orderId);
+
         /* Then */
-        assertEquals(1L, order.getId());
-        assertEquals(10L, order.getUserId());
-        assertEquals(3, productList.size());
+        if (optionalOrder.isPresent()) {
+            assertTrue(optionalOrder.isPresent());
+            assertEquals(1L, optionalOrder.get().getId());
+            assertEquals(10L, optionalOrder.get().getUserId());
+            assertEquals(3, optionalOrder.get().getProductList().size());
+        }
         /* Cleanup */
         orderDao.deleteAll();
     }
