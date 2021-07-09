@@ -3,6 +3,7 @@ package com.kodilla.ecommercee.repository;
 import com.kodilla.ecommercee.domain.Group;
 import com.kodilla.ecommercee.domain.Order;
 import com.kodilla.ecommercee.domain.Product;
+import com.kodilla.ecommercee.domain.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,6 +21,9 @@ class OrderTestSuite {
     @Autowired
     private OrderDao orderDao;
 
+    @Autowired
+    private UserDao userDao;
+
     @Test
     public void testOrderEntity() {
         /* Given */
@@ -28,20 +32,22 @@ class OrderTestSuite {
         products.add(new Product(null, "product 02", "description 02", new BigDecimal(200), null, null));
         products.add(new Product(null,"product 03", "description 03", new BigDecimal(300), null, null));
 
-        Order order  = new Order(1L, 10L, products);
+        User user = new User();
+        userDao.save(user);
+
+        Order order  = new Order(null, user,true, products);
         orderDao.save(order);
 
         /* When */
         Long orderId = order.getId();
         Optional<Order> optionalOrder = orderDao.findById(orderId);
+        Long userId = user.getId();
 
         /* Then */
-        if (optionalOrder.isPresent()) {
-            assertTrue(optionalOrder.isPresent());
-            assertEquals(1L, optionalOrder.get().getId());
-            assertEquals(10L, optionalOrder.get().getUserId());
-            assertEquals(3, optionalOrder.get().getProductList().size());
-        }
+        assertTrue(optionalOrder.isPresent());
+        assertEquals(userId, optionalOrder.get().getUser().getId());
+        assertEquals(3, optionalOrder.get().getProductList().size());
+
         /* Cleanup */
         orderDao.deleteAll();
     }
