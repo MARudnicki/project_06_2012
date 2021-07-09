@@ -38,6 +38,5 @@ public class Order {
     @OneToMany(targetEntity = Product.class,
             cascade = CascadeType.ALL,
             fetch = FetchType.EAGER)
-    @Fetch(value = FetchMode.SUBSELECT)
     private List<Product> productList = new ArrayList<>();
 }
