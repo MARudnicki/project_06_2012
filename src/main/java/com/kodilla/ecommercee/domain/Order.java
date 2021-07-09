@@ -31,6 +31,10 @@ public class Order {
     @JoinColumn(name = "USER_ID")
     private User user;
 
+    @NotNull
+    @Column(name = "REALISED")
+    private boolean realised;
+
     @OneToMany(targetEntity = Product.class,
             cascade = CascadeType.ALL,
             fetch = FetchType.EAGER)

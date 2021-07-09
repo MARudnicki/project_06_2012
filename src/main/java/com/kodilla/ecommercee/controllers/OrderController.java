@@ -21,6 +21,7 @@ public class OrderController {
     public OrderDto getOrder(@PathVariable Long orderId) {
         return new OrderDto(
                 1L,
+                2L,
                 true,
                 new ArrayList<>()
         );
@@ -33,8 +34,9 @@ public class OrderController {
     @PutMapping(value = "updateOrder", consumes = APPLICATION_JSON_VALUE)
     public OrderDto updateOrder(@RequestBody OrderDto orderDto) {
         return new OrderDto(
+                orderDto.getId(),
                 orderDto.getUserId(),
-                orderDto.isRealized(),
+                orderDto.isRealised(),
                 orderDto.getProducts()
         );
     }

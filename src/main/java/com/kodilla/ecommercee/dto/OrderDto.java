@@ -13,9 +13,15 @@ import java.util.List;
 @Data
 public class OrderDto {
 
+    private Long id;
     private long userId;
-    private boolean isRealized;
-    private List<ProductDto> products = new ArrayList<>();
-  
+    private boolean realised;
+    private List<String> products = new ArrayList<>();
+
+    public OrderDto(long userId, boolean realised, List<String> products) {
+        this.userId = userId;
+        this.realised = realised;
+        this.products = products;
+    }
 }
 
