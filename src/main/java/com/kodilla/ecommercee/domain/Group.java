@@ -2,7 +2,6 @@ package com.kodilla.ecommercee.domain;
 
 import com.sun.istack.NotNull;
 import lombok.*;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.util.ArrayList;
