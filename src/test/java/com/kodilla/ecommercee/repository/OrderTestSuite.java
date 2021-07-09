@@ -1,6 +1,5 @@
 package com.kodilla.ecommercee.repository;
 
-import com.kodilla.ecommercee.domain.Group;
 import com.kodilla.ecommercee.domain.Order;
 import com.kodilla.ecommercee.domain.Product;
 import com.kodilla.ecommercee.domain.User;

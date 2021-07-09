@@ -38,4 +38,9 @@ public class Group {
     public Group(@NotNull String name) {
         this.name = name;
     }
+
+    public Group(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 }
