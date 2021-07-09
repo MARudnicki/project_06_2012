@@ -1,6 +1,7 @@
 package com.kodilla.ecommercee.service;
 
 import com.kodilla.ecommercee.domain.Order;
+import com.kodilla.ecommercee.exception.OrderNotFoundException;
 import com.kodilla.ecommercee.repository.OrderDao;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,8 +19,8 @@ public class OrderService {
         return orderDao.findAll();
     }
 
-    public Optional<Order> getOrder(Long id){
-        return orderDao.findById(id);
+    public Order getOrder(Long id) throws OrderNotFoundException {
+        return orderDao.findById(id).orElseThrow(OrderNotFoundException::new);
     }
 
     public Order saveOrder(final Order order) {

@@ -35,7 +35,7 @@ class OrderTestSuite {
         User user = new User();
         userDao.save(user);
 
-        Order order  = new Order(null, user, products);
+        Order order  = new Order(null, user,true, products);
         orderDao.save(order);
 
         /* When */
