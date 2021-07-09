@@ -22,18 +22,18 @@ public class CartController {
         return new ArrayList<>();
     }
 
-    @GetMapping(value = "/addProduct/{product}&{cartDto}")
-    public void addProduct(ProductDto product, CartDto cartDto) {
-        cartDto.getShoppingCart().add(product);
+    @PutMapping(value = "/addProduct")
+    public void addProduct( @RequestBody ProductDto product) {
+
     }
 
-    @DeleteMapping(value = "/removeProduct/{productId}&{cartDto}")
-    void removeProduct(int productId, CartDto cartDto) {
-        cartDto.getShoppingCart().remove(productId);
+    @DeleteMapping(value = "/removeProduct/{productId}")
+    void removeProduct(@PathVariable int productId) {
+
     }
 
     @PostMapping(value = "/createOrder/{userId}")
-    public OrderDto createOrder(@RequestBody Long userId) {
+    public OrderDto createOrder(@PathVariable Long userId) {
         return new OrderDto(userId, false, new ArrayList<>());
     }
 }
