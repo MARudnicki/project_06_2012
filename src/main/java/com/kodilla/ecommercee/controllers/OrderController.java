@@ -27,11 +27,11 @@ public class OrderController {
         );
     }
 
-    @PostMapping(value = "createOrder")
+    @PostMapping(value = "/createOrder")
     public void createOrder(@RequestBody OrderDto orderDto) {
     }
 
-    @PutMapping(value = "updateOrder", consumes = APPLICATION_JSON_VALUE)
+    @PutMapping(value = "/updateOrder", consumes = APPLICATION_JSON_VALUE)
     public OrderDto updateOrder(@RequestBody OrderDto orderDto) {
         return new OrderDto(
                 orderDto.getId(),
@@ -41,6 +41,6 @@ public class OrderController {
         );
     }
 
-    @DeleteMapping(value = "deleteOrder/{orderId}")
+    @DeleteMapping(value = "/deleteOrder/{orderId}")
     public void deleteOrder(@PathVariable Long orderId) {}
 }
