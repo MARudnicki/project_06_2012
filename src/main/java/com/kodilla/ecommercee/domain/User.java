@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
 
 @Setter
@@ -37,9 +38,10 @@ public class User {
     private BigInteger userKey = getUserKey();
 
     @OneToMany(targetEntity = Order.class,
+            mappedBy = "user",
             cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY)
-    private List<Order> orders;
+            fetch = FetchType.EAGER)
+    private List<Order> orders = new ArrayList<>();
 
     @Access(AccessType.FIELD)
     @OneToOne(cascade = CascadeType.ALL)
