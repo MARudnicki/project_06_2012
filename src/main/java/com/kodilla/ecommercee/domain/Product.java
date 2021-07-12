@@ -51,4 +51,11 @@ public class Product {
         this.description = description;
         this.price = price;
     }
+
+    public Product(String name, String description, BigDecimal price, Group group) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.group = group;
+    }
 }
