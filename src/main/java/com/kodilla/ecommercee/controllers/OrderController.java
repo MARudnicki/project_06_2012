@@ -2,9 +2,9 @@ package com.kodilla.ecommercee.controllers;
 
 import com.kodilla.ecommercee.domain.Order;
 import com.kodilla.ecommercee.dto.OrderDto;
-import com.kodilla.ecommercee.exception.OrderNotFoundException;
-import com.kodilla.ecommercee.exception.ProductNotFoundException;
-import com.kodilla.ecommercee.exception.UserNotFoundException;
+import com.kodilla.ecommercee.exceptions.OrderNotFoundException;
+import com.kodilla.ecommercee.exceptions.ProductNotFoundException;
+import com.kodilla.ecommercee.exceptions.UserNotFoundException;
 import com.kodilla.ecommercee.mapper.OrderMapper;
 import com.kodilla.ecommercee.service.OrderService;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
