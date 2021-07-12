@@ -20,8 +20,8 @@ public class UserMapper {
     public UserMapper() {
     }
 
-    public UserDto mapToUserDto(final User user){
-        UserKeyDto userKeyDto = new UserKeyDto(user.getUserKey(), System.currentTimeMillis() + 60*60*1000);
+    public UserDto mapToUserDto(final User user, final Long validUserKeyTime){
+        UserKeyDto userKeyDto = new UserKeyDto(user.getUserKey(), validUserKeyTime);
         return new UserDto(
                 user.getId(),
                 user.getUsername(),
@@ -33,7 +33,7 @@ public class UserMapper {
 
     public List<UserDto> mapToUserDtoList(final List<User> userList) {
         return userList.stream()
-                .map(this::mapToUserDto)
+                .map((User user) -> mapToUserDto(user, System.currentTimeMillis() + 60*60*1000))
                 .collect(Collectors.toList());
     }
 

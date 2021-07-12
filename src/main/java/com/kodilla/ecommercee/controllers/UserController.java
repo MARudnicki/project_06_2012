@@ -35,7 +35,8 @@ public class UserController {
 
     @GetMapping(value = "/getUser/{userId}")
     public UserDto getUser(@PathVariable Long userId) throws UserNotFoundException {
-        return userMapper.mapToUserDto(userService.getUser(userId));
+        Long validUserKeyTime = System.currentTimeMillis() + 60*60*1000;
+        return userMapper.mapToUserDto(userService.getUser(userId), validUserKeyTime);
     }
 
 
@@ -53,16 +54,18 @@ public class UserController {
     @PutMapping(value = "/updateUser", consumes = APPLICATION_JSON_VALUE)
     public UserDto updateUser(@RequestBody UserDto userDto) throws UserNotFoundException {
         User user = userMapper.mapToUser(userDto);
+        Long validUserKeyTime = userDto.getUserKey().getValidUserKeyTime();
         User saveUser = userService.saveUser(user);
-        return userMapper.mapToUserDto(saveUser);
+        return userMapper.mapToUserDto(saveUser, validUserKeyTime);
     }
 
     @PutMapping(value = "/blockUser")
     public UserDto blockUser(@RequestBody UserDto userDto) throws UserNotFoundException {
         UserDto blockUserDto = new UserDto(userDto.getId(),userDto.getUsername(),false,userDto.getUserKey(),userDto.getCart());
+        Long validBlockedUserKeyTime = blockUserDto.getUserKey().getValidUserKeyTime();
         User blockUser = userMapper.mapToUser(blockUserDto);
         User saveBlockUser = userService.saveUser(blockUser);
-        return userMapper.mapToUserDto(saveBlockUser);
+        return userMapper.mapToUserDto(saveBlockUser, validBlockedUserKeyTime);
     }
 
     @PutMapping(value = "/updateUserKey")
@@ -73,9 +76,10 @@ public class UserController {
         if (userDto.getUserKey().getValidUserKeyTime() < System.currentTimeMillis() - 60*60*1000)
             validUserKeyTime = System.currentTimeMillis();
         UserDto updatedUserDto = new UserDto(userDto.getId(), userDto.getUsername(), userDto.getStatus(), new UserKeyDto(userKey, validUserKeyTime), new CartDto());
+        Long validupdatedUserKeyTime = updatedUserDto.getUserKey().getValidUserKeyTime();
         User updatedUser = userMapper.mapToUser(updatedUserDto);
         User saveUpdatedUser = userService.saveUser(updatedUser);
-        return userMapper.mapToUserDto(saveUpdatedUser);
+        return userMapper.mapToUserDto(saveUpdatedUser, validupdatedUserKeyTime);
     }
 
 }
