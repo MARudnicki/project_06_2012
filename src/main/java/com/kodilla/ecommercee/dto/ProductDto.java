@@ -15,4 +15,10 @@ public class ProductDto {
     private BigDecimal price;
     private Long groupId;
 
+    public ProductDto(String name, String description, BigDecimal price, Long groupId) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.groupId = groupId;
+    }
 }

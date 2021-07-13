@@ -35,9 +35,7 @@ public class Product {
     @Column(name = "PRICE")
     private BigDecimal price;
 
-    @ManyToOne(
-            cascade = CascadeType.PERSIST
-    )
+    @ManyToOne
     @JoinColumn(name = "GROUP_ID")
     private Group group;
 

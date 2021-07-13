@@ -11,6 +11,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.math.BigDecimal;
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 @SpringBootTest
 public class ProductDaoTest {
@@ -23,18 +25,15 @@ public class ProductDaoTest {
     public void testEntityProduct() {
 
         //Given
-        Product product = new Product(1L, "test", "test",
-                new BigDecimal(500), new Group(), new Order());
-        //When
+        Product product = new Product("product1", "description1", new BigDecimal(1));
         productDao.save(product);
-        Optional<Product> readProduct = productDao.findById(1L);
+
+        //When
+        Optional<Product> readProduct = productDao.findById(product.getId());
 
         //Then
+        assertTrue(readProduct.isPresent());
 
-
-        if (readProduct.isPresent()) {
-            Assertions.assertTrue(true);
-        }
         //CleanUp
         productDao.delete(product);
 
