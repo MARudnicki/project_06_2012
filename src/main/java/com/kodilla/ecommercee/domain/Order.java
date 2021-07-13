@@ -36,7 +36,7 @@ public class Order {
     private boolean realised;
 
     @OneToMany(targetEntity = Product.class,
-            cascade = CascadeType.ALL,
+            cascade = CascadeType.REMOVE,
             fetch = FetchType.EAGER)
     private List<Product> productList = new ArrayList<>();
 }
