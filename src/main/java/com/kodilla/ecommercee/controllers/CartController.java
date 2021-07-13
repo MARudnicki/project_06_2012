@@ -1,39 +1,53 @@
 package com.kodilla.ecommercee.controllers;
 
+import com.kodilla.ecommercee.domain.Cart;
+import com.kodilla.ecommercee.domain.User;
 import com.kodilla.ecommercee.dto.CartDto;
 import com.kodilla.ecommercee.dto.OrderDto;
-import com.kodilla.ecommercee.dto.ProductDto;
-import com.kodilla.ecommercee.dto.UserDto;
+import com.kodilla.ecommercee.exceptions.CartNotFoundException;
+import com.kodilla.ecommercee.mapper.CartMapper;
+import com.kodilla.ecommercee.mapper.OrderMapper;
+import com.kodilla.ecommercee.mapper.ProductMapper;
+import com.kodilla.ecommercee.service.CartDbService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 @RequestMapping("/v1/cart")
+@RequiredArgsConstructor
 public class CartController {
 
-    @PostMapping(value = "/emptyShoppingCart")
-    public void emptyShoppingCart(UserDto userDto) {
+    private final ProductMapper productMapper;
+    private final CartMapper cartMapper;
+    private final CartDbService service;
+    private final OrderMapper orderMapper;
+
+    @GetMapping(value = "/emptyShoppingCart/{cartId}")
+    public void emptyShoppingCart(@PathVariable Long cartId) {
+        service.emptyShoppingCart(cartId);
     }
 
-    @GetMapping(value = "/getProductsShoppingCart/{cartId}")
-    public List<ProductDto> getProductsShoppingCart(Long cartId) {
-        return new ArrayList<>();
+    //Ta juz jest raczej git
+    @GetMapping(value = "/getProductsFromShoppingCart/{cartId}")
+    public void getProductsFromShoppingCart(@PathVariable Long cartId) throws CartNotFoundException {
+        service.getProductsFromShoppingCart(cartId);
     }
 
+    //Ta juz jest raczej git
     @PutMapping(value = "/addProduct")
-    public void addProduct( @RequestBody ProductDto product) {
-
+    public void addProduct(@RequestBody CartDto cartDto) {
+        Cart cart = cartMapper.mapToCart(cartDto);
+        service.addProductToCart(cart);
     }
 
-    @DeleteMapping(value = "/removeProduct/{productId}")
-    void removeProduct(@PathVariable int productId) {
-
+    @DeleteMapping(value = "/removeProduct/product/{productId}/from/{cartID}")
+    void removeProduct(@PathVariable Long productId, @PathVariable Long cartID) throws CartNotFoundException {
+        service.deleteProductFromCart(productId, cartID);
     }
 
-    @PostMapping(value = "/createOrder/{userId}")
-    public OrderDto createOrder(@PathVariable Long userId) {
-        return new OrderDto(userId, false, new ArrayList<>());
+    @PostMapping(value = "/createOrder")
+    public OrderDto createOrder(@RequestBody User user) {
+        return new OrderDto();
+
     }
 }

@@ -1,5 +1,6 @@
 package com.kodilla.ecommercee.domain;
 
+import com.kodilla.ecommercee.dto.ProductDto;
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -34,11 +35,18 @@ public class Cart {
             fetch = FetchType.EAGER
     )
     @Fetch(value = FetchMode.SUBSELECT)
-    private List<Product> shoppingCart = new ArrayList<>();
+    @JoinColumn(name = "CART_ID",updatable = false)
+    private List<Product> shoppingCart;
 
     @Access(AccessType.FIELD)
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "USER")
     private User user;
+
+
+    public Cart(Long id, List<Product> shoppingCart) {
+        this.id = id;
+        this.shoppingCart = shoppingCart;
+    }
 
 }
