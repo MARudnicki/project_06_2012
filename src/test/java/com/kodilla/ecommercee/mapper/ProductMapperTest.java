@@ -50,5 +50,9 @@ class ProductMapperTest {
         //Then
         assertTrue(optionalProduct.isPresent());
         assertEquals(optionalGroup.get().getId(), optionalProduct.get().getGroup().getId());
+
+        //Cleanup
+        productDao.deleteAll();
+        groupDao.deleteAll();
     }
 }
