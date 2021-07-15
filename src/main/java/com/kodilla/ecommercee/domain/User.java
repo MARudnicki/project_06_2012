@@ -43,11 +43,6 @@ public class User {
             fetch = FetchType.EAGER)
     private List<Order> orders = new ArrayList<>();
 
-    @Access(AccessType.FIELD)
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "CART")
-    private Cart cart;
-
     public User(String username) {
         this.username = username;
     }
