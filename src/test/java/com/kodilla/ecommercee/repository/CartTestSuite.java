@@ -39,7 +39,8 @@ class CartTestSuite {
 
         cart.setUser(user);
 
-        user.setCart(cart);
+        // WARNING. USER don't use CART.
+//        user.setCart(cart);
 
         cartDao.save(cart);
 
@@ -52,7 +53,8 @@ class CartTestSuite {
         //Then
         assertTrue(foundCart.isPresent());
         assertEquals(3, foundCart.get().getShoppingCart().size());
-        assertEquals(foundUser.get().getCart().getId(), cartId);
+        // WARNING. USER don't use CART.
+//        assertEquals(foundUser.get().getCart().getId(), cartId);
 
         //Cleanup
         cartDao.deleteAll();

@@ -25,7 +25,7 @@ public class UserTestSuite {
         //Given
         List<Order> orders = new ArrayList<>();
         Cart cart1 = new Cart();
-        User user1 = new User(null, "UserA", true, BigInteger.valueOf(12345), orders, cart1);
+        User user1 = new User(null, "UserA", true, BigInteger.valueOf(12345), orders);
         userDao.save(user1);
 
         //When
