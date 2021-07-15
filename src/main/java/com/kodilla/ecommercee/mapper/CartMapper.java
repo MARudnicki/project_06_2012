@@ -1,10 +1,10 @@
 package com.kodilla.ecommercee.mapper;
 
 import com.kodilla.ecommercee.domain.Cart;
+import com.kodilla.ecommercee.domain.Product;
 import com.kodilla.ecommercee.dto.CartDto;
-import com.kodilla.ecommercee.repository.CartDao;
+import com.kodilla.ecommercee.exceptions.ProductNotFoundException;
 import com.kodilla.ecommercee.repository.ProductDao;
-import com.kodilla.ecommercee.repository.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,32 +12,38 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class CartMapper  {
+public class CartMapper {
 
-
-    private final UserDao userDao;
     private final ProductDao productDao;
 
     @Autowired
-    public CartMapper(final UserDao userDao, final ProductDao productDao) {
-        this.userDao = userDao;
+    public CartMapper(final ProductDao productDao) {
         this.productDao = productDao;
     }
 
     public Cart mapToCart(final CartDto cartDto) {
         return new Cart(
                 cartDto.getId(),
-                cartDto.getShoppingCart());
+                cartDto.getShoppingCart().stream()
+                        .map(
+                                p -> {
+                                    try {
+                                        return productDao.findByName(p).orElseThrow(ProductNotFoundException::new);
+                                    } catch (ProductNotFoundException e) {
+                                        e.printStackTrace();
+                                    }
+                                    return null;
+                                }).collect(Collectors.toList()));
     }
 
-    public CartDto mapToCartDto(final Cart cart){
-        return  new CartDto(
+    public CartDto mapToCartDto(final Cart cart) {
+        return new CartDto(
                 cart.getId(),
-                cart.getShoppingCart()
+                cart.getShoppingCart().stream().map(Product::getName).collect(Collectors.toList())
         );
     }
 
-    public List<CartDto> mapToCartDtoList(final List<Cart> cartList){
+    public List<CartDto> mapToCartDtoList(final List<Cart> cartList) {
         return cartList
                 .stream()
                 .map(this::mapToCartDto)

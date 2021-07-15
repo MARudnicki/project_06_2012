@@ -1,13 +1,17 @@
 package com.kodilla.ecommercee.controllers;
 
 import com.kodilla.ecommercee.domain.Cart;
+import com.kodilla.ecommercee.domain.Order;
 import com.kodilla.ecommercee.domain.User;
 import com.kodilla.ecommercee.dto.CartDto;
 import com.kodilla.ecommercee.dto.OrderDto;
+import com.kodilla.ecommercee.dto.UserDto;
 import com.kodilla.ecommercee.exceptions.CartNotFoundException;
+import com.kodilla.ecommercee.exceptions.UserNotFoundException;
 import com.kodilla.ecommercee.mapper.CartMapper;
 import com.kodilla.ecommercee.mapper.OrderMapper;
 import com.kodilla.ecommercee.mapper.ProductMapper;
+import com.kodilla.ecommercee.mapper.UserMapper;
 import com.kodilla.ecommercee.service.CartDbService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -17,14 +21,14 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class CartController {
 
-    private final ProductMapper productMapper;
+    private final UserMapper userMapper;
     private final CartMapper cartMapper;
     private final CartDbService service;
     private final OrderMapper orderMapper;
 
-    @GetMapping(value = "/emptyShoppingCart/{cartId}")
-    public void emptyShoppingCart(@PathVariable Long cartId) {
-        service.emptyShoppingCart(cartId);
+    @GetMapping(value = "/emptyShoppingCart/{userId}")
+    public void emptyShoppingCart(@PathVariable Long userId) {
+
     }
 
     //Ta juz jest raczej git
@@ -46,8 +50,7 @@ public class CartController {
     }
 
     @PostMapping(value = "/createOrder")
-    public OrderDto createOrder(@RequestBody User user) {
-        return new OrderDto();
-
+    public OrderDto createOrder(@RequestBody UserDto userDto) throws UserNotFoundException {
+        return orderMapper.mapToOrderDto(service.CreateOrder(userMapper.mapToUser(userDto)));
     }
 }

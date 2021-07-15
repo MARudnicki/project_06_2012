@@ -6,8 +6,6 @@ import com.kodilla.ecommercee.domain.Product;
 import com.kodilla.ecommercee.domain.User;
 import com.kodilla.ecommercee.exceptions.CartNotFoundException;
 import com.kodilla.ecommercee.repository.CartDao;
-import com.kodilla.ecommercee.repository.ProductDao;
-import com.kodilla.ecommercee.repository.UserDao;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -23,10 +21,8 @@ public class CartDbService {
 
     private final CartDao cartDao;
 
-    public void emptyShoppingCart(Long cartId) {
-        Optional<Cart> byId = cartDao.findById(cartId);
-        List<Cart> collect = byId.stream().collect(Collectors.toList());
-        collect.removeAll(collect);
+    public void emptyShoppingCart(Long userId) {
+
     }
 
     ///////////////
@@ -40,10 +36,8 @@ public class CartDbService {
     }
 
     //////////////
-    public Cart addProductToCart(Cart cart) {
-        Cart cartEdit = cartDao.findById(cart.getId()).orElseThrow();
-        cartEdit.setShoppingCart(cart.getShoppingCart());
-        return cartEdit;
+    public void addProductToCart(Cart cart) {
+
     }
 
     public void deleteProductFromCart(Long productId, Long cartID) throws CartNotFoundException {
@@ -57,7 +51,8 @@ public class CartDbService {
 
     public Order CreateOrder(User user) {
 
-       return new Order();
+        return new Order(null,user.getCart().getUser(),
+                false,user.getCart().getShoppingCart());
     }
 }
 

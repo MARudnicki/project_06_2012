@@ -2,10 +2,12 @@ package com.kodilla.ecommercee.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
 @Getter
+@NoArgsConstructor
 @AllArgsConstructor
 public class ProductDto {
 
@@ -15,4 +17,10 @@ public class ProductDto {
     private BigDecimal price;
     private Long groupId;
 
+    public ProductDto(String name, String description, BigDecimal price, Long groupId) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.groupId = groupId;
+    }
 }

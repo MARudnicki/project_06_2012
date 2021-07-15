@@ -13,5 +13,5 @@ import java.util.List;
 @Data
 public class CartDto {
     private long id;
-    private List<Product> shoppingCart = new ArrayList<>();
+    private List<String> shoppingCart = new ArrayList<>();
 }

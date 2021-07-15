@@ -25,7 +25,7 @@ public class OrderMapper {
         this.productDao = productDao;
     }
 
-    public Order mapToOrder(final OrderDto orderDto) throws UserNotFoundException, ProductNotFoundException {
+    public Order mapToOrder(final OrderDto orderDto) throws UserNotFoundException {
         return new Order(
                 orderDto.getId(),
                 userDao.findById(orderDto.getUserId()).orElseThrow(UserNotFoundException::new),
