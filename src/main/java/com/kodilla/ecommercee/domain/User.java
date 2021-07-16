@@ -51,4 +51,13 @@ public class User {
     public User(String username) {
         this.username = username;
     }
+
+    public User(final Long id) { this.id = id; }
+
+    public User(final Long id, final String username, final Boolean status, final BigInteger userKey) {
+        this.id = id;
+        this.username = username;
+        this.status = status;
+        this.userKey = userKey;
+    }
 }

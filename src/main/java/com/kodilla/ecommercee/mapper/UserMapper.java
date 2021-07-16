@@ -1,6 +1,5 @@
 package com.kodilla.ecommercee.mapper;
 
-import com.kodilla.ecommercee.domain.Cart;
 import com.kodilla.ecommercee.domain.User;
 import com.kodilla.ecommercee.dto.CartDto;
 import com.kodilla.ecommercee.dto.UserDto;
@@ -9,7 +8,6 @@ import com.kodilla.ecommercee.exceptions.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -42,9 +40,7 @@ public class UserMapper {
                 userDto.getId(),
                 userDto.getUsername(),
                 userDto.getStatus(),
-                userDto.getUserKey().getUserKey(),
-                null,
-                null
+                userDto.getUserKey().getUserKey()
         );
     }
 

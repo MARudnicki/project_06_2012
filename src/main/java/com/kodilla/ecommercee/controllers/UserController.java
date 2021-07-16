@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
 import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -60,26 +59,24 @@ public class UserController {
     }
 
     @PutMapping(value = "/blockUser")
-    public UserDto blockUser(@RequestBody UserDto userDto) throws UserNotFoundException {
-        UserDto blockUserDto = new UserDto(userDto.getId(),userDto.getUsername(),false,userDto.getUserKey(),userDto.getCart());
-        Long validBlockedUserKeyTime = blockUserDto.getUserKey().getValidUserKeyTime();
-        User blockUser = userMapper.mapToUser(blockUserDto);
-        User saveBlockUser = userService.saveUser(blockUser);
-        return userMapper.mapToUserDto(saveBlockUser, validBlockedUserKeyTime);
+    public UserDto blockUser(@RequestBody Long id) throws UserNotFoundException {
+        User blockUser = userService.getUser(id);
+        blockUser.setStatus(false);
+        return userMapper.mapToUserDto(blockUser, System.currentTimeMillis() + 60*60*1000);
     }
 
     @PutMapping(value = "/updateUserKey")
-    public UserDto updateUserKey(@RequestBody UserDto userDto) throws UserNotFoundException {
+    public UserDto updateUserKey(@RequestBody Long id) throws UserNotFoundException {
         int random5digsInt = 10000 + new Random().nextInt(90000);
         BigInteger userKey = new BigInteger(String.valueOf(random5digsInt));
+        User updatedUser = userService.getUser(id);
+        UserDto userDto = new UserDto(updatedUser.getId(), updatedUser.getUsername(), updatedUser.getStatus(), new UserKeyDto(updatedUser.getUserKey(), System.currentTimeMillis() + 60*60*1000), null);
         Long validUserKeyTime = userDto.getUserKey().getValidUserKeyTime();
         if (userDto.getUserKey().getValidUserKeyTime() < System.currentTimeMillis() - 60*60*1000)
-            validUserKeyTime = System.currentTimeMillis();
+            validUserKeyTime = System.currentTimeMillis() + 60*60*1000;
         UserDto updatedUserDto = new UserDto(userDto.getId(), userDto.getUsername(), userDto.getStatus(), new UserKeyDto(userKey, validUserKeyTime), new CartDto());
-        Long validupdatedUserKeyTime = updatedUserDto.getUserKey().getValidUserKeyTime();
-        User updatedUser = userMapper.mapToUser(updatedUserDto);
         User saveUpdatedUser = userService.saveUser(updatedUser);
-        return userMapper.mapToUserDto(saveUpdatedUser, validupdatedUserKeyTime);
+        return userMapper.mapToUserDto(saveUpdatedUser, updatedUserDto.getUserKey().getValidUserKeyTime());
     }
 
 }
