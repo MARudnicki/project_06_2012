@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 public class CartDto {
-    private long userId;
-    private List<ProductDto> shoppingCart = new ArrayList<>();
+    private Long id;
+    private List<String> shoppingCart = new ArrayList<>();
 
 }
