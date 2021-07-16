@@ -23,9 +23,7 @@ public class UserTestSuite {
     @Test
     public void userEntityTest() {
         //Given
-        List<Order> orders = new ArrayList<>();
-        Cart cart1 = new Cart();
-        User user1 = new User(null, "UserA", true, BigInteger.valueOf(12345), orders);
+        User user1 = new User(null, "UserA", true, BigInteger.valueOf(12345));
         userDao.save(user1);
 
         //When
