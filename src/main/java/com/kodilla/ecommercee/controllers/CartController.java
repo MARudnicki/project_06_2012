@@ -13,6 +13,7 @@ import com.kodilla.ecommercee.mapper.OrderMapper;
 import com.kodilla.ecommercee.mapper.ProductMapper;
 import com.kodilla.ecommercee.mapper.UserMapper;
 import com.kodilla.ecommercee.service.CartDbService;
+import com.kodilla.ecommercee.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,32 +26,33 @@ public class CartController {
     private final CartMapper cartMapper;
     private final CartDbService service;
     private final OrderMapper orderMapper;
+    private final OrderService orderService;
 
     @GetMapping(value = "/emptyShoppingCart/{userId}")
     public void emptyShoppingCart(@PathVariable Long userId) {
-
+        service.emptyShoppingCart(userId);
     }
 
-    //Ta juz jest raczej git
+
     @GetMapping(value = "/getProductsFromShoppingCart/{cartId}")
     public void getProductsFromShoppingCart(@PathVariable Long cartId) throws CartNotFoundException {
         service.getProductsFromShoppingCart(cartId);
     }
 
-    //Ta juz jest raczej git
-    @PutMapping(value = "/addProduct")
-    public void addProduct(@RequestBody CartDto cartDto) {
-        Cart cart = cartMapper.mapToCart(cartDto);
-        service.addProductToCart(cart);
+
+    @GetMapping(value = "/addProduct/add{productId/to{cartId}")
+    public void addProduct(@PathVariable Long cartId,@PathVariable Long productId) {
+        service.addProductToCart(cartId,productId);
     }
 
-    @DeleteMapping(value = "/removeProduct/product/{productId}/from/{cartID}")
+
+    @GetMapping(value = "/removeProduct/product/{productId}/from/{cartID}")
     void removeProduct(@PathVariable Long productId, @PathVariable Long cartID) throws CartNotFoundException {
         service.deleteProductFromCart(productId, cartID);
     }
 
-    @PostMapping(value = "/createOrder")
-    public OrderDto createOrder(@RequestBody UserDto userDto) throws UserNotFoundException {
-        return orderMapper.mapToOrderDto(service.CreateOrder(userMapper.mapToUser(userDto)));
+    @PostMapping(value = "/createOrder/{cartId}")
+    public void createOrder(@PathVariable Long cartId){
+      orderService.saveOrder(service.CreateOrder(cartId));
     }
 }

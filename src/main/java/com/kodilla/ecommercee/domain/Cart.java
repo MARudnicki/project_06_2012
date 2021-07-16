@@ -43,10 +43,4 @@ public class Cart {
     @JoinColumn(name = "USER")
     private User user;
 
-
-    public Cart(Long id, List<Product> shoppingCart) {
-        this.id = id;
-        this.shoppingCart = shoppingCart;
-    }
-
 }

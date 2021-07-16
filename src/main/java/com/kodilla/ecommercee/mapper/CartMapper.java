@@ -5,6 +5,7 @@ import com.kodilla.ecommercee.domain.Product;
 import com.kodilla.ecommercee.dto.CartDto;
 import com.kodilla.ecommercee.exceptions.ProductNotFoundException;
 import com.kodilla.ecommercee.repository.ProductDao;
+import com.kodilla.ecommercee.repository.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,10 +16,12 @@ import java.util.stream.Collectors;
 public class CartMapper {
 
     private final ProductDao productDao;
+    private final UserDao userDao;
 
     @Autowired
-    public CartMapper(final ProductDao productDao) {
+    public CartMapper(final ProductDao productDao, UserDao userDao) {
         this.productDao = productDao;
+        this.userDao = userDao;
     }
 
     public Cart mapToCart(final CartDto cartDto) {
@@ -26,14 +29,15 @@ public class CartMapper {
                 cartDto.getId(),
                 cartDto.getShoppingCart().stream()
                         .map(
-                                p -> {
+                                c -> {
                                     try {
-                                        return productDao.findByName(p).orElseThrow(ProductNotFoundException::new);
+                                        return productDao.findByName(c).orElseThrow(ProductNotFoundException::new);
                                     } catch (ProductNotFoundException e) {
                                         e.printStackTrace();
                                     }
                                     return null;
-                                }).collect(Collectors.toList()));
+                                }).collect(Collectors.toList()),
+                null);
     }
 
     public CartDto mapToCartDto(final Cart cart) {
