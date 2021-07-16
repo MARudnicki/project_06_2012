@@ -6,6 +6,7 @@ import com.kodilla.ecommercee.domain.Product;
 import com.kodilla.ecommercee.domain.User;
 import com.kodilla.ecommercee.exceptions.CartNotFoundException;
 import com.kodilla.ecommercee.exceptions.ProductNotFoundException;
+import com.kodilla.ecommercee.exceptions.UserNotFoundException;
 import com.kodilla.ecommercee.repository.CartDao;
 import com.kodilla.ecommercee.repository.ProductDao;
 import com.kodilla.ecommercee.repository.UserDao;
@@ -59,10 +60,11 @@ public class CartDbService {
         cart.getShoppingCart().removeAll(products);
     }
 
-    public Order CreateOrder(Long cartId) {
+    public Order CreateOrder(Long cartId) throws UserNotFoundException {
         List<Product> orderedProducts = cartDao.findById(cartId).get().getShoppingCart();
         Order order = new Order();
-        User user = userDao.findById(1L).stream().collect(Collectors.toList()).get(0);
+        User user = userDao.findById(cartId).orElseThrow(UserNotFoundException::new);
+
         order.setProductList(orderedProducts);
         order.setUser(user);
         order.setRealised(false);

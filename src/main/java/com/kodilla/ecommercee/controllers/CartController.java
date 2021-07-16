@@ -53,7 +53,7 @@ public class CartController {
     }
 
     @GetMapping(value = "/createOrder/{cartId}")
-    public OrderDto createOrder(@PathVariable Long cartId) {
+    public OrderDto createOrder(@PathVariable Long cartId) throws UserNotFoundException {
         return orderMapper.mapToOrderDto(service.CreateOrder(cartId));
     }
 
